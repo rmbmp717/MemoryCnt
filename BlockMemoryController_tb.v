@@ -62,10 +62,17 @@ module BlockMemoryController_tb;
         // 初期書き込み: 異なるアドレスにデータを書き込む
         #10 wr_addr1 = 12'd257; wr_data1 = 32'hAAAA_AAAA; wr_enable1 = 1;
             wr_addr2 = 12'd50; wr_data2 = 32'hBBBB_BBBB; wr_enable2 = 1;
+            wr_addr3 = 12'd3099; wr_addr4 = 12'd3099;
+        #10 wr_enable1 = 0; wr_enable2 = 0;
+            wr_addr1 = 12'd2057;
+        #10 wr_enable1 = 0; wr_enable2 = 1;
         #10 wr_enable1 = 0; wr_enable2 = 0;
 
         // 書き込んだデータの読み出し
         #10 rd_addr1 = 12'd257; rd_addr2 = 12'd1048; rd_addr3 = 12'd1048;
+
+        // 書き込んだデータの読み出し
+        #10 rd_addr1 = 12'd2099; rd_addr2 = 12'd50; rd_addr3 = 12'd1048;
 
         // 書き込んだデータの読み出し
         #10 rd_addr1 = 12'd2048; rd_addr2 = 12'd2048; rd_addr3 = 12'd257;
@@ -97,8 +104,12 @@ module BlockMemoryController_tb;
         #10
 
         // 書き込んだデータの読み出し
-        #10 rd_addr3 = 12'd257; rd_addr4 = 12'd512; 
+        #10 rd_addr3 = 12'd256; rd_addr4 = 12'd512; 
             rd_addr1 = 12'd4015; rd_addr2 = 12'd4015;
+        #10
+            rd_addr1 = 12'd0; rd_addr2 = 12'd4015;
+        #10
+            rd_addr1 = 12'd4014; rd_addr3 = 12'd4015; rd_addr4 = 12'd257;
         #10
 
         // 終了
